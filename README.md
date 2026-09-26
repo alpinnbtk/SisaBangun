@@ -1,6 +1,6 @@
 # SisaBangun
 
-*A catalog website for used construction materials from a family contracting business — browse items, then order via WhatsApp. Built daily as a full-stack + web-operations learning project.*
+_A catalog website for used construction materials from a family contracting business — browse items, then order via WhatsApp. Built daily as a full-stack + web-operations learning project._
 
 ![Node](https://img.shields.io/badge/node-20%2B-green)
 ![TypeScript](https://img.shields.io/badge/typescript-strict-blue)
@@ -16,7 +16,7 @@
 
 My father is a contractor, and over the years his projects have left behind a lot of reusable materials — steel, timber, frames, tiles — that he can only sell to the handful of buyers he knows personally. He has wanted a website for this for a long time.
 
-I'm a Data Science & AI student interning as a web developer, working mainly in Go. This project lets me learn the stack much of the web industry uses today (TypeScript, React/Next.js, Postgres) *and* the parts coursework rarely covers: hosting, security, backups, monitoring, and handing a tool over to a non-technical user. It's built in daily increments over ~8 weeks; see [`docs/journal.md`](docs/journal.md) for the weekly log and [`LEARNING_MAP.md`](LEARNING_MAP.md) for the day-by-day plan.
+I'm a Data Science & AI student interning as a web developer, working mainly in Go. This project lets me learn the stack much of the web industry uses today (TypeScript, React/Next.js, Postgres) _and_ the parts coursework rarely covers: hosting, security, backups, monitoring, and handing a tool over to a non-technical user. It's built in daily increments over ~8 weeks; see [`docs/journal.md`](docs/journal.md) for the weekly log and [`LEARNING_MAP.md`](LEARNING_MAP.md) for the day-by-day plan.
 
 ## What it does
 
@@ -52,12 +52,12 @@ flowchart TB
         P[Public pages]
         AD[Admin panel]
     end
-    subgraph Next.js
+    subgraph NX["Next.js"]
         SC[Server Components]
         SA[Server Actions + Zod]
         MW[Middleware: protects /admin]
     end
-    subgraph Supabase
+    subgraph SB["Supabase"]
         DB[(Postgres + RLS)]
         AU[Auth]
         ST[Storage: item photos]
@@ -66,7 +66,7 @@ flowchart TB
     AD --> MW --> SA --> DB
     SA --> ST
     AD --> AU
-    P -. wa.me link .-> WA[WhatsApp]
+    P -.->|wa.me link| WA[WhatsApp]
 ```
 
 ## Project structure
@@ -116,13 +116,13 @@ pnpm dev                            # http://localhost:3000
 
 ### Environment variables
 
-| Variable | Exposed to browser? | Description |
-|---|---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | Yes | Supabase project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Yes | Public (anon/publishable) key — safe *only* because RLS is enabled |
-| `SUPABASE_SERVICE_ROLE_KEY` | **Never** | Server-only; bypasses RLS. Avoid using it at all if possible |
-| `NEXT_PUBLIC_WA_NUMBER` | Yes | WhatsApp number in international format, e.g. `628xxxxxxxxxx` |
-| `NEXT_PUBLIC_SITE_URL` | Yes | Canonical site URL, used for links and Open Graph images |
+| Variable                        | Exposed to browser? | Description                                                        |
+| ------------------------------- | ------------------- | ------------------------------------------------------------------ |
+| `NEXT_PUBLIC_SUPABASE_URL`      | Yes                 | Supabase project URL                                               |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Yes                 | Public (anon/publishable) key — safe _only_ because RLS is enabled |
+| `SUPABASE_SERVICE_ROLE_KEY`     | **Never**           | Server-only; bypasses RLS. Avoid using it at all if possible       |
+| `NEXT_PUBLIC_WA_NUMBER`         | Yes                 | WhatsApp number in international format, e.g. `628xxxxxxxxxx`      |
+| `NEXT_PUBLIC_SITE_URL`          | Yes                 | Canonical site URL, used for links and Open Graph images           |
 
 ### Scripts
 
@@ -157,7 +157,7 @@ pnpm build        # production build
 
 ## Lessons learned
 
-*(populated from `docs/journal.md` and `docs/final_review.md` at the end of the 8 weeks)*
+_(populated from `docs/journal.md` and `docs/final_review.md` at the end of the 8 weeks)_
 
 ## License
 
