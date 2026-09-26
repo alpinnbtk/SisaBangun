@@ -123,6 +123,8 @@ pnpm dev                            # http://localhost:3000
 | `SUPABASE_SERVICE_ROLE_KEY`     | **Never**           | Server-only; bypasses RLS. Avoid using it at all if possible       |
 | `NEXT_PUBLIC_WA_NUMBER`         | Yes                 | WhatsApp number in international format, e.g. `628xxxxxxxxxx`      |
 | `NEXT_PUBLIC_SITE_URL`          | Yes                 | Canonical site URL, used for links and Open Graph images           |
+| `NEXT_PUBLIC_WA_NUMBER` | Yes | Primary WhatsApp (owner), international format, e.g. `628xxxxxxxxxx` |
+| `NEXT_PUBLIC_WA_NUMBER_BACKUP` | Yes | Backup WhatsApp (sibling), shown as a secondary link |
 
 ### Scripts
 
