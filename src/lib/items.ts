@@ -1,8 +1,5 @@
 import { CATEGORIES, ITEMS, ITEM_PHOTOS } from "@/data/dummy";
-import type { Item, ItemWithRelations } from "@/types/item";
-
-// The ONLY place that knows where data comes from.
-// Day 16: replace these bodies with Supabase queries — pages & components stay unchanged.
+import type { Category, Item, ItemWithRelations } from "@/types/item";
 
 function withRelations(item: Item): ItemWithRelations {
   const category = CATEGORIES.find((c) => c.id === item.category_id);
@@ -15,10 +12,21 @@ function withRelations(item: Item): ItemWithRelations {
   return { ...item, category, photos };
 }
 
-export async function getItems(): Promise<ItemWithRelations[]> {
+export async function getCategories(): Promise<Category[]> {
+  return [...CATEGORIES].sort((a, b) => a.sort_order - b.sort_order);
+}
+
+type GetItemsOptions = {
+  categorySlug?: string;
+};
+
+export async function getItems({ categorySlug }: GetItemsOptions = {}): Promise<
+  ItemWithRelations[]
+> {
   return [...ITEMS]
     .sort((a, b) => b.created_at.localeCompare(a.created_at)) // newest first
-    .map(withRelations);
+    .map(withRelations)
+    .filter((item) => !categorySlug || item.category.slug === categorySlug);
 }
 
 export async function getItemBySlug(slug: string): Promise<ItemWithRelations | null> {
@@ -26,7 +34,6 @@ export async function getItemBySlug(slug: string): Promise<ItemWithRelations | n
   return item ? withRelations(item) : null;
 }
 
-// Day 21: return the Supabase Storage public URL instead
 export function photoUrl(storagePath: string): string {
   return `/${storagePath}`;
 }
