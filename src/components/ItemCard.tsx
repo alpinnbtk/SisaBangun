@@ -1,14 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CONDITION_LABEL, STATUS_LABEL, formatPrice, formatQuantity } from "@/lib/item-format";
+import { CONDITION_LABEL, formatPrice, formatQuantity } from "@/lib/item-format";
 import { photoUrl } from "@/lib/items";
-import type { ItemStatus, ItemWithRelations } from "@/types/item";
-
-const STATUS_STYLE: Record<ItemStatus, string> = {
-  available: "bg-green-100 text-green-800",
-  reserved: "bg-yellow-100 text-yellow-800",
-  sold: "bg-gray-200 text-gray-700",
-};
+import { StatusBadge } from "./StatusBadge";
+import type { ItemWithRelations } from "@/types/item";
 
 export function ItemCard({ item }: { item: ItemWithRelations }) {
   const cover = item.photos[0];
@@ -33,11 +28,7 @@ export function ItemCard({ item }: { item: ItemWithRelations }) {
             Belum ada foto
           </div>
         )}
-        <span
-          className={`absolute top-2 left-2 rounded px-2 py-0.5 text-xs font-medium ${STATUS_STYLE[item.status]}`}
-        >
-          {STATUS_LABEL[item.status]}
-        </span>
+        <StatusBadge status={item.status} className="absolute top-2 left-2" />
       </div>
 
       <div className="space-y-1 p-3">

@@ -33,3 +33,12 @@ export function formatPrice(pricePerUnit: number | null, unit: ItemUnit): string
   if (pricePerUnit === null) return "Nego";
   return `${rupiah.format(pricePerUnit)} / ${UNIT_LABEL[unit]}`;
 }
+
+const dateFormatter = new Intl.DateTimeFormat("id-ID", {
+  dateStyle: "long",
+  timeZone: "Asia/Jakarta", // servers (e.g. Vercel) run in UTC — always pin the zone
+});
+
+export function formatDate(iso: string): string {
+  return dateFormatter.format(new Date(iso)); // "20 Oktober 2026"
+}
