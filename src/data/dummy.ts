@@ -110,5 +110,7 @@ export const ITEMS: Item[] = [
 ];
 
 export const ITEM_PHOTOS: ItemPhoto[] = [
-  // Add rows here if you put photos in public/dummy/ (see Step 2b)
+  { id: "photo-2", item_id: "item-1", storage_path: "dummy/foto-2.jpg", sort_order: 1 },
+  { id: "photo-1", item_id: "item-1", storage_path: "dummy/foto-1.jpg", sort_order: 0 },
+  { id: "photo-3", item_id: "item-1", storage_path: "dummy/foto-3.jpg", sort_order: 2 },
 ];
