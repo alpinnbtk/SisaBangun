@@ -5,6 +5,9 @@ import { PhotoGallery } from "@/components/PhotoGallery";
 import { StatusBadge } from "@/components/StatusBadge";
 import { CONDITION_LABEL, formatDate, formatPrice, formatQuantity } from "@/lib/item-format";
 import { getItemBySlug, photoUrl } from "@/lib/items";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { siteConfig } from "@/lib/site-config";
+import { buildItemMessage, buildWhatsAppLink, itemUrl } from "@/lib/whatsapp";
 
 export async function generateMetadata({ params }: PageProps<"/barang/[slug]">): Promise<Metadata> {
   const { slug } = await params;
@@ -28,6 +31,10 @@ export default async function ItemDetailPage({ params }: PageProps<"/barang/[slu
   // Resolve URLs on the server; the client gallery only receives plain strings
   const photos = item.photos.map((p) => ({ id: p.id, url: photoUrl(p.storage_path) }));
   const categoryHref = `/barang?kategori=${item.category.slug}`;
+
+  const message = buildItemMessage(item, itemUrl(item.slug, siteConfig.siteUrl));
+  const waPrimary = buildWhatsAppLink(siteConfig.waPrimary, message);
+  const waBackup = siteConfig.waBackup ? buildWhatsAppLink(siteConfig.waBackup, message) : null;
 
   const specs = [
     { label: "Kategori", value: item.category.name },
@@ -94,7 +101,17 @@ export default async function ItemDetailPage({ params }: PageProps<"/barang/[slu
             ))}
           </dl>
 
-          {/* Day 11: WhatsApp CTA goes here */}
+          {item.status !== "sold" && (
+            <WhatsAppButton
+              primaryHref={waPrimary}
+              backupHref={waBackup}
+              label={
+                item.status === "reserved"
+                  ? "Tanya ketersediaan via WhatsApp"
+                  : "Pesan via WhatsApp"
+              }
+            />
+          )}
 
           {item.status !== "sold" && (
             <ul className="space-y-1 rounded-lg bg-gray-50 p-4 text-sm text-gray-700">
