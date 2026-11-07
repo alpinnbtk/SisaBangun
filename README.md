@@ -2,6 +2,8 @@
 
 _A catalog website for used construction materials from a family contracting business — browse items, then order via WhatsApp. Built daily as a full-stack + web-operations learning project._
 
+**Live preview:** https://sisabangun.vercel.app — dummy data, not open for real orders yet.
+
 ![Node](https://img.shields.io/badge/node-20%2B-green)
 ![TypeScript](https://img.shields.io/badge/typescript-strict-blue)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
@@ -116,15 +118,15 @@ pnpm dev                            # http://localhost:3000
 
 ### Environment variables
 
-| Variable                        | Exposed to browser? | Description                                                        |
-| ------------------------------- | ------------------- | ------------------------------------------------------------------ |
-| `NEXT_PUBLIC_SUPABASE_URL`      | Yes                 | Supabase project URL                                               |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Yes                 | Public (anon/publishable) key — safe _only_ because RLS is enabled |
-| `SUPABASE_SERVICE_ROLE_KEY`     | **Never**           | Server-only; bypasses RLS. Avoid using it at all if possible       |
-| `NEXT_PUBLIC_WA_NUMBER`         | Yes                 | WhatsApp number in international format, e.g. `628xxxxxxxxxx`      |
-| `NEXT_PUBLIC_SITE_URL`          | Yes                 | Canonical site URL, used for links and Open Graph images           |
-| `NEXT_PUBLIC_WA_NUMBER` | Yes | Primary WhatsApp (owner), international format, e.g. `628xxxxxxxxxx` |
-| `NEXT_PUBLIC_WA_NUMBER_BACKUP` | Yes | Backup WhatsApp (sibling), shown as a secondary link |
+| Variable                        | Exposed to browser? | Description                                                          |
+| ------------------------------- | ------------------- | -------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SUPABASE_URL`      | Yes                 | Supabase project URL                                                 |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Yes                 | Public (anon/publishable) key — safe _only_ because RLS is enabled   |
+| `SUPABASE_SERVICE_ROLE_KEY`     | **Never**           | Server-only; bypasses RLS. Avoid using it at all if possible         |
+| `NEXT_PUBLIC_WA_NUMBER`         | Yes                 | WhatsApp number in international format, e.g. `628xxxxxxxxxx`        |
+| `NEXT_PUBLIC_SITE_URL`          | Yes                 | Canonical site URL, used for links and Open Graph images             |
+| `NEXT_PUBLIC_WA_NUMBER`         | Yes                 | Primary WhatsApp (owner), international format, e.g. `628xxxxxxxxxx` |
+| `NEXT_PUBLIC_WA_NUMBER_BACKUP`  | Yes                 | Backup WhatsApp (sibling), shown as a secondary link                 |
 
 ### Scripts
 
@@ -151,7 +153,7 @@ pnpm build        # production build
 
 ## Progress
 
-- [ ] Week 1–2 — Discovery, foundations & static catalog
+- [x] Week 1–2 — Discovery, foundations & static catalog
 - [ ] Week 3 — Database & RLS (`v0.1-public-catalog`)
 - [ ] Week 4–5 — Admin panel, photos & usability test (`v0.2-admin`)
 - [ ] Week 6 — Testing, CI & security hardening
