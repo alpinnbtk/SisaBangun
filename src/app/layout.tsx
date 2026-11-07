@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   },
   description:
     "Katalog material bangunan bekas dari proyek kontraktor. Harga nego langsung via WhatsApp.",
+    robots: { index: false, follow: false },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
