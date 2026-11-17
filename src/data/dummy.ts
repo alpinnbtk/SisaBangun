@@ -3,11 +3,41 @@ import type { Category, Item, ItemPhoto } from "@/types/item";
 // TEMP: dummy data until Supabase (Day 16). IDs are fake; real ones will be UUIDs.
 
 export const CATEGORIES: Category[] = [
-  { id: 1, name: "Andang & Perancah", slug: "andang-perancah", sort_order: 1 },
-  { id: 2, name: "Mesin & Alat Kerja", slug: "mesin-alat-kerja", sort_order: 2 },
-  { id: 3, name: "Pipa & Plumbing", slug: "pipa-plumbing", sort_order: 3 },
-  { id: 4, name: "Engsel & Hardware", slug: "engsel-hardware", sort_order: 4 },
-  { id: 5, name: "Bahan Bangunan Lainnya", slug: "bahan-lainnya", sort_order: 5 },
+  {
+    id: 1,
+    name: "Andang & Perancah",
+    slug: "andang-perancah",
+    sort_order: 1,
+    created_at: "2026-10-01T00:00:00Z",
+  },
+  {
+    id: 2,
+    name: "Mesin & Alat Kerja",
+    slug: "mesin-alat-kerja",
+    sort_order: 2,
+    created_at: "2026-10-01T00:00:00Z",
+  },
+  {
+    id: 3,
+    name: "Pipa & Plumbing",
+    slug: "pipa-plumbing",
+    sort_order: 3,
+    created_at: "2026-10-01T00:00:00Z",
+  },
+  {
+    id: 4,
+    name: "Engsel & Hardware",
+    slug: "engsel-hardware",
+    sort_order: 4,
+    created_at: "2026-10-01T00:00:00Z",
+  },
+  {
+    id: 5,
+    name: "Bahan Bangunan Lainnya",
+    slug: "bahan-lainnya",
+    sort_order: 5,
+    created_at: "2026-10-01T00:00:00Z",
+  },
 ];
 
 export const ITEMS: Item[] = [
@@ -26,6 +56,8 @@ export const ITEMS: Item[] = [
     status: "available",
     created_at: "2026-10-20T08:00:00Z",
     sold_at: null,
+    updated_at: "2026-10-01T00:00:00Z",
+    deleted_at: null,
   },
   {
     id: "item-2",
@@ -42,6 +74,8 @@ export const ITEMS: Item[] = [
     status: "sold",
     created_at: "2026-10-05T08:00:00Z",
     sold_at: "2026-10-18T10:00:00Z",
+    updated_at: "2026-10-01T00:00:00Z",
+    deleted_at: null,
   },
   {
     id: "item-3",
@@ -58,6 +92,8 @@ export const ITEMS: Item[] = [
     status: "available",
     created_at: "2026-10-22T08:00:00Z",
     sold_at: null,
+    updated_at: "2026-10-01T00:00:00Z",
+    deleted_at: null,
   },
   {
     id: "item-4",
@@ -74,6 +110,8 @@ export const ITEMS: Item[] = [
     status: "reserved",
     created_at: "2026-10-15T08:00:00Z",
     sold_at: null,
+    updated_at: "2026-10-01T00:00:00Z",
+    deleted_at: null,
   },
   {
     id: "item-5",
@@ -90,6 +128,8 @@ export const ITEMS: Item[] = [
     status: "available",
     created_at: "2026-10-24T08:00:00Z",
     sold_at: null,
+    updated_at: "2026-10-01T00:00:00Z",
+    deleted_at: null,
   },
   {
     id: "item-6",
@@ -106,11 +146,31 @@ export const ITEMS: Item[] = [
     status: "available",
     created_at: "2026-10-10T08:00:00Z",
     sold_at: null,
+    updated_at: "2026-10-01T00:00:00Z",
+    deleted_at: null,
   },
 ];
 
 export const ITEM_PHOTOS: ItemPhoto[] = [
-  { id: "photo-2", item_id: "item-1", storage_path: "dummy/foto-2.jpg", sort_order: 1 },
-  { id: "photo-1", item_id: "item-1", storage_path: "dummy/foto-1.jpg", sort_order: 0 },
-  { id: "photo-3", item_id: "item-1", storage_path: "dummy/foto-3.jpg", sort_order: 2 },
+  {
+    id: "photo-2",
+    item_id: "item-1",
+    storage_path: "dummy/foto-2.jpg",
+    sort_order: 1,
+    created_at: "2026-10-01T00:00:00Z",
+  },
+  {
+    id: "photo-1",
+    item_id: "item-1",
+    storage_path: "dummy/foto-1.jpg",
+    sort_order: 0,
+    created_at: "2026-10-01T00:00:00Z",
+  },
+  {
+    id: "photo-3",
+    item_id: "item-1",
+    storage_path: "dummy/foto-3.jpg",
+    sort_order: 2,
+    created_at: "2026-10-01T00:00:00Z",
+  },
 ];
