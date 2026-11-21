@@ -11,4 +11,6 @@ export const siteConfig = {
   siteUrl: required("NEXT_PUBLIC_SITE_URL", process.env.NEXT_PUBLIC_SITE_URL),
   waPrimary: required("NEXT_PUBLIC_WA_NUMBER", process.env.NEXT_PUBLIC_WA_NUMBER),
   waBackup: process.env.NEXT_PUBLIC_WA_NUMBER_BACKUP || null, // optional
+  supabaseUrl: required("NEXT_PUBLIC_SUPABASE_URL", process.env.NEXT_PUBLIC_SUPABASE_URL),
+  supabaseKey: required("NEXT_PUBLIC_SUPABASE_ANON_KEY", process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY),
 };
