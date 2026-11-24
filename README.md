@@ -4,7 +4,7 @@ _A catalog website for used construction materials from a family contracting bus
 
 **Live preview:** https://sisabangun.vercel.app — dummy data, not open for real orders yet.
 
-![Node](https://img.shields.io/badge/node-20%2B-green)
+![Node](https://img.shields.io/badge/node-26%2B-green)
 ![TypeScript](https://img.shields.io/badge/typescript-strict-blue)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
@@ -98,7 +98,7 @@ sisabangun/
 
 ## Getting started
 
-Requirements: Node.js 20+, pnpm, Docker (for the local Supabase stack), Supabase CLI.
+Requirements: Node.js 26+, pnpm, Docker (for the local Supabase stack), Supabase CLI.
 
 ```bash
 git clone https://github.com/<your-username>/sisabangun.git
