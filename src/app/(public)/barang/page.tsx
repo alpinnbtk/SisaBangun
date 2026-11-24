@@ -2,33 +2,44 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CategoryFilter } from "@/components/CategoryFilter";
 import { ItemCard } from "@/components/ItemCard";
+import { Pagination } from "@/components/Pagination";
+import { SearchBox } from "@/components/SearchBox";
+import { buildCatalogHref, firstParam, parsePageParam } from "@/lib/catalog-url";
 import { getCategories, getItems } from "@/lib/items";
 
-// ?kategori=a&kategori=b arrives as an array — take the first one
-function firstParam(value: string | string[] | undefined): string | undefined {
-  return Array.isArray(value) ? value[0] : value;
-}
-
 export async function generateMetadata({ searchParams }: PageProps<"/barang">): Promise<Metadata> {
-  const slug = firstParam((await searchParams).kategori);
+  const params = await searchParams;
+  const q = firstParam(params.q)?.trim();
+  if (q) return { title: `Cari “${q}” — Katalog` };
+
+  const slug = firstParam(params.kategori);
   const category = (await getCategories()).find((c) => c.slug === slug);
   return { title: category ? `${category.name} — Katalog` : "Katalog" };
 }
 
 export default async function CatalogPage({ searchParams }: PageProps<"/barang">) {
-  const requested = firstParam((await searchParams).kategori);
+  const params = await searchParams;
+  const requested = firstParam(params.kategori);
+  const q = firstParam(params.q)?.trim() ?? "";
+  const page = parsePageParam(firstParam(params.halaman));
+
   const categories = await getCategories();
-  const active = categories.find((c) => c.slug === requested); // unknown slug → treated as "Semua"
-  const items = await getItems({ categorySlug: active?.slug });
+  const active = categories.find((c) => c.slug === requested); // unknown slug → "Semua"
+  const kategori = active?.slug;
+
+  const { items, total, totalPages } = await getItems({ categorySlug: kategori, search: q, page });
+
+  const heading = q ? `Hasil untuk “${q}”` : active ? active.name : "Semua barang";
 
   return (
     <section className="space-y-4">
       <div>
-        <h1 className="text-2xl font-bold">{active ? active.name : "Semua barang"}</h1>
-        <p className="text-sm text-gray-500">{items.length} barang</p>
+        <h1 className="text-2xl font-bold">{heading}</h1>
+        <p className="text-sm text-gray-500">{total} barang</p>
       </div>
 
-      <CategoryFilter categories={categories} activeSlug={active?.slug} />
+      <SearchBox defaultValue={q} kategori={kategori} />
+      <CategoryFilter categories={categories} activeSlug={kategori} search={q} />
 
       {items.length > 0 ? (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -38,12 +49,35 @@ export default async function CatalogPage({ searchParams }: PageProps<"/barang">
         </div>
       ) : (
         <div className="rounded-lg border border-dashed p-8 text-center text-gray-500">
-          <p>Belum ada barang di kategori ini.</p>
-          <Link href="/barang" className="mt-2 inline-block underline">
-            Lihat semua barang
-          </Link>
+          {page > 1 ? (
+            <>
+              <p>Halaman ini tidak ada.</p>
+              <Link
+                href={buildCatalogHref({ kategori, q })}
+                className="mt-2 inline-block underline"
+              >
+                Kembali ke halaman pertama
+              </Link>
+            </>
+          ) : q ? (
+            <>
+              <p>Tidak ada barang yang cocok dengan “{q}”.</p>
+              <Link href={buildCatalogHref({ kategori })} className="mt-2 inline-block underline">
+                Hapus pencarian
+              </Link>
+            </>
+          ) : (
+            <>
+              <p>Belum ada barang di kategori ini.</p>
+              <Link href="/barang" className="mt-2 inline-block underline">
+                Lihat semua barang
+              </Link>
+            </>
+          )}
         </div>
       )}
+
+      <Pagination page={page} totalPages={totalPages} kategori={kategori} q={q} />
     </section>
   );
 }

@@ -1,12 +1,14 @@
 import Link from "next/link";
 import type { Category } from "@/types/item";
+import { buildCatalogHref } from "@/lib/catalog-url";
 
 type CategoryFilterProps = {
   categories: Category[];
   activeSlug?: string;
+  search?: string;
 };
 
-export function CategoryFilter({ categories, activeSlug }: CategoryFilterProps) {
+export function CategoryFilter({ categories, activeSlug, search }: CategoryFilterProps) {
   const options = [
     { slug: undefined, name: "Semua" },
     ...categories.map((c) => ({ slug: c.slug, name: c.name })),
@@ -21,7 +23,7 @@ export function CategoryFilter({ categories, activeSlug }: CategoryFilterProps) 
           return (
             <li key={option.slug ?? "all"} className="shrink-0">
               <Link
-                href={option.slug ? `/barang?kategori=${option.slug}` : "/barang"}
+                href={buildCatalogHref({ kategori: option.slug, q: search })}
                 scroll={false}
                 aria-current={isActive ? "page" : undefined}
                 className={`inline-flex min-h-11 items-center rounded-full border px-4 text-sm whitespace-nowrap transition ${
