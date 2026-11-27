@@ -68,10 +68,16 @@ export default async function CatalogPage({ searchParams }: PageProps<"/barang">
             </>
           ) : (
             <>
-              <p>Belum ada barang di kategori ini.</p>
-              <Link href="/barang" className="mt-2 inline-block underline">
-                Lihat semua barang
-              </Link>
+              <p>
+                {active
+                  ? "Belum ada barang di kategori ini."
+                  : "Belum ada barang yang dijual saat ini."}
+              </p>
+              {active && (
+                <Link href="/barang" className="mt-2 inline-block underline">
+                  Lihat semua barang
+                </Link>
+              )}
             </>
           )}
         </div>
