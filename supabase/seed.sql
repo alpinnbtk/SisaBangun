@@ -54,6 +54,7 @@ select i.id, p.path, p.sort_order
 from (values
   ('andang-besi-170-cm-sb-0001', 'dummy/foto-1.jpg', 0),
   ('andang-besi-170-cm-sb-0001', 'dummy/foto-2.jpg', 1),
-  ('andang-besi-170-cm-sb-0001', 'dummy/foto-3.jpg', 2)
+  ('andang-besi-170-cm-sb-0001', 'dummy/foto-3.jpg', 2),
+  ('barang-dihapus-sb-0007',     'dummy/tersembunyi.jpg', 0)
 ) as p (slug, path, sort_order)
 join public.items i on i.slug = p.slug;
