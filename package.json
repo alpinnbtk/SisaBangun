@@ -12,7 +12,8 @@
     "format:check": "prettier --check .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "db:types": "supabase gen types --lang typescript --local > src/types/database.ts"
+    "db:types": "supabase gen types --lang typescript --local > src/types/database.ts",
+    "rls:check": "node --env-file=.env.local scripts/rls-check.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.119.2",
