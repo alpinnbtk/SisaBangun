@@ -154,7 +154,7 @@ pnpm build        # production build
 ## Progress
 
 - [x] Week 1–2 — Discovery, foundations & static catalog
-- [ ] Week 3 — Database & RLS (`v0.1-public-catalog`)
+- [x] Week 3 — Database & RLS (`v0.1-public-catalog`)
 - [ ] Week 4–5 — Admin panel, photos & usability test (`v0.2-admin`)
 - [ ] Week 6 — Testing, CI & security hardening
 - [ ] Week 7–8 — Go-live, operations & handover (`v1.0`)
